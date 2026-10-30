@@ -1,7 +1,13 @@
+DATA_FILE = "students.csv"
+SCORE_MIN = 0
+SCORE_MAX = 100
+PASS_SCORE = 60.0
+
 def title_case_name(name):
     """Clean and format a person's name."""
     return " ".join(name.strip().split().title())
 #return grade according to the score
+
 def grade_calculation(score):
     if score >= 90:
         return "A"
@@ -13,6 +19,7 @@ def grade_calculation(score):
         return "D"
     else:
         return "F"
+
 def clean_and_validate_email(email):
     """Clean and validate an email address."""
     cleaned = email.strip().lower()
@@ -21,8 +28,9 @@ def clean_and_validate_email(email):
     if "." not in cleaned:
         return None, "Missing dot"
     return cleaned, "Valid"
+
 def validate_score(score_text):
-    """把成绩文本转换成 float 并校验范围。返回 (成绩, 错误信息)。"""
+    """Turn score into float and correct its range.Return score and error message."""
     try:
         score = float(score_text)
     except ValueError:
