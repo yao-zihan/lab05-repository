@@ -1,0 +1,32 @@
+def title_case_name(name):
+    """Clean and format a person's name."""
+    return " ".join(name.strip().split().title())
+#return grade according to the score
+def grade_calculation(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+def clean_and_validate_email(email):
+    """Clean and validate an email address."""
+    cleaned = email.strip().lower()
+    if "@" not in cleaned:
+        return None, "Missing @ symbol"
+    if "." not in cleaned:
+        return None, "Missing dot"
+    return cleaned, "Valid"
+def validate_score(score_text):
+    """把成绩文本转换成 float 并校验范围。返回 (成绩, 错误信息)。"""
+    try:
+        score = float(score_text)
+    except ValueError:
+        return None, "Score must be a float"
+    if not (SCORE_MIN <= score <= SCORE_MAX):
+        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"
+    return score, ""
