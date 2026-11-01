@@ -38,3 +38,24 @@ def validate_score(score_text):
     if not (SCORE_MIN <= score <= SCORE_MAX):
         return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"
     return score, ""
+
+
+def print_header(title):
+    """Print a header to the screen."""
+    print()
+    print("=" * 42)
+    print(coloriza(title, CYAN))
+    print("=" * 42)
+
+def print_menu():
+    """display the menu options"""
+    print_header("Students' scores management system")
+    print(" 1. Display all students")
+    print(" 2. Add new student")
+    print(" 3. Edit student")
+    print(" 4. Delete student")
+    print(" 5. Search student according to ID")
+    print(" 6. Search (Name / ID / Email)")
+    print(" 7. Score statistics")
+    print(" 8. Save statistics")
+    print(" 0. Exit program")
