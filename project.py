@@ -1,7 +1,17 @@
+# ------------------------------------------------------------------
+# Some constants
+# ------------------------------------------------------------------
+
 DATA_FILE = "students.csv"
+CSV_HEADER = "student_id,name,email,score"        # CSV header (AI)
+"""To create a file that store the scores of the students which is learned from AI"""
 SCORE_MIN = 0
 SCORE_MAX = 100
 PASS_SCORE = 60.0
+
+# ------------------------------------------------------------------
+# Some main functions
+# ------------------------------------------------------------------
 
 def title_case_name(name):
     """Clean and format a person's name."""
@@ -46,6 +56,11 @@ def print_header(title):
     print("=" * 42)
     print(coloriza(title, CYAN))
     print("=" * 42)
+
+# ------------------------------------------------------------------
+# Some subfunctions
+# ------------------------------------------------------------------
+
 
 def print_menu():
     """display the menu options"""
