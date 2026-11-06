@@ -18,7 +18,15 @@ def title_case_name(name):
     return " ".join(name.strip().split().title())
 #return grade according to the score
 
+def student_to_csv(student):
+    """Turn a student into string."""
+    return ",".join(
+        [student.student_id, student.name, student.email, str(student.score)]  #Array
+    )
+
+
 def grade_calculation(score):
+    """Calculate a grade."""
     if score >= 90:
         return "A"
     elif score >= 80:
@@ -29,6 +37,15 @@ def grade_calculation(score):
         return "D"
     else:
         return "F"
+
+def average_score(students):
+    """Calculate average score。"""
+    if not students:
+        return None          #If there's no student,return none.(AI)
+    total = 0
+    for student in students:
+        total += student.score
+    return total / len(students)
 
 def clean_and_validate_email(email):
     """Clean and validate an email address."""
@@ -47,7 +64,7 @@ def validate_score(score_text):
         return None, "Score must be a float"
     if not (SCORE_MIN <= score <= SCORE_MAX):
         return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"
-    return score, ""
+    return score, ""                           # Using "" as a success symbol
 
 
 def print_header(title):
