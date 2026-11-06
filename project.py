@@ -13,12 +13,12 @@ PASS_SCORE = 60.0
 # Some main functions
 # ------------------------------------------------------------------
 
-def title_case_name(name):
+def title_name(name):
     """Clean and format a person's name."""
     return " ".join(name.strip().split().title())
 #return grade according to the score
 
-def student_to_csv(student):
+def student_into_csv(student):
     """Turn a student into string."""
     return ",".join(
         [student.student_id, student.name, student.email, str(student.score)]  #Array
@@ -47,6 +47,27 @@ def average_score(students):
         total += student.score
     return total / len(students)
 
+def highest_score(students):
+    """Return the highest score."""
+    if not students:
+        return None
+    best = students[0]     #Let the first student be the example
+    for student in students:
+        if student.score > best.score:
+            best = student
+    return best
+
+
+def lowest_score(students):
+    """Return the lowest score."""
+    if not students:
+        return None
+    worst = students[0]      #Same as "best"
+    for student in students:
+        if student.score < worst.score:
+            worst = student
+    return worst
+
 def clean_and_validate_email(email):
     """Clean and validate an email address."""
     cleaned = email.strip().lower()
@@ -66,13 +87,14 @@ def validate_score(score_text):
         return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"
     return score, ""                           # Using "" as a success symbol
 
+def format_student(student):
+    """Show student details."""
+    grade = grade_calculation(student.score)
+    status = "PASS" if student.score >= PASS_SCORE else "FAIL"  # 三元表达式
+    return (f"ID {student.student_id} | Name {student.name} | "
+            f"Email {student.email} | Score {student.score:.1f} | "
+            f"Grade {grade} | {status}")
 
-def print_header(title):
-    """Print a header to the screen."""
-    print()
-    print("=" * 42)
-    print(coloriza(title, CYAN))
-    print("=" * 42)
 
 # ------------------------------------------------------------------
 # Some subfunctions
@@ -91,3 +113,10 @@ def print_menu():
     print(" 7. Score statistics")
     print(" 8. Save statistics")
     print(" 0. Exit program")
+
+    def print_header(title):
+        """Print a header to the screen."""
+        print()
+        print("=" * 42)
+        print(coloriza(title, CYAN))
+        print("=" * 42)
