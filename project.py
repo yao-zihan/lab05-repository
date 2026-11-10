@@ -1,4 +1,22 @@
 # ------------------------------------------------------------------
+#The following lines are the result of AI
+#To make the window colorful
+# ------------------------------------------------------------------
+
+USE_COLOR = True
+RESET = "\033[0m"
+GREEN = "\033[92m"
+RED = "\033[91m"
+CYAN = "\033[96m"
+YELLOW = "\033[93m"
+
+def colorize(text, code):
+    """To make the window colorful"""
+    if USE_COLOR:
+        return f"{code}{text}{RESET}"
+    return text
+
+# ------------------------------------------------------------------
 # Some constants
 # ------------------------------------------------------------------
 
@@ -41,7 +59,7 @@ def grade_calculation(score):
 def average_score(students):
     """Calculate average score。"""
     if not students:
-        return None          #If there's no student,return none.(AI)
+        return None          #If there's no student,return none.
     total = 0
     for student in students:
         total += student.score
@@ -84,13 +102,36 @@ def validate_score(score_text):
     except ValueError:
         return None, "Score must be a float"
     if not (SCORE_MIN <= score <= SCORE_MAX):
-        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"
+        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}" #keep the number being integer
     return score, ""                           # Using "" as a success symbol
+
+def grade_distribution(students):
+    """Count the number of students in each grade."""
+    count_a = 0
+    count_b = 0
+    count_c = 0
+    count_d = 0
+    count_f = 0
+    for student in students:
+        grade = grade_calculation(student.score)
+        if grade == "A":
+            count_a += 1
+        elif grade == "B":
+            count_b += 1
+        elif grade == "C":
+            count_c += 1
+        elif grade == "D":
+            count_d += 1
+        else:
+            count_f += 1
+    return {"A": count_a, "B": count_b, "C": count_c, "D": count_d, "F": count_f}
 
 def format_student(student):
     """Show student details."""
     grade = grade_calculation(student.score)
-    status = "PASS" if student.score >= PASS_SCORE else "FAIL"  # 三元表达式
+    if student.score >= PASS_SCORE:
+        status = "PASS"
+    else: "FAIL"
     return (f"ID {student.student_id} | Name {student.name} | "
             f"Email {student.email} | Score {student.score:.1f} | "
             f"Grade {grade} | {status}")
@@ -100,6 +141,12 @@ def format_student(student):
 # Some subfunctions
 # ------------------------------------------------------------------
 
+def print_header(title):
+    """Print a header to the screen."""
+    print()
+    print("=" * 42)
+    print(colorize(title, CYAN))
+    print("=" * 42)
 
 def print_menu():
     """display the menu options"""
@@ -114,9 +161,4 @@ def print_menu():
     print(" 8. Save statistics")
     print(" 0. Exit program")
 
-    def print_header(title):
-        """Print a header to the screen."""
-        print()
-        print("=" * 42)
-        print(coloriza(title, CYAN))
-        print("=" * 42)
+
