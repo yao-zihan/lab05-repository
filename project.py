@@ -3,7 +3,8 @@
 #To make the window colorful
 # ------------------------------------------------------------------
 
-USE_COLOR = True
+"""Using Octal to define the colors."""
+USE_COLOR = True    #To start the using of color
 RESET = "\033[0m"
 GREEN = "\033[92m"
 RED = "\033[91m"
