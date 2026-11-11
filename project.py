@@ -20,9 +20,9 @@ def colorize(text, code):
 # Some constants
 # ------------------------------------------------------------------
 
-DATA_FILE = "students.csv"
+DATA_FILE = "students.csv"                        # To create a csv form to store the information
 CSV_HEADER = "student_id,name,email,score"        # CSV header (AI)
-"""To create a file that store the scores of the students which is learned from AI"""
+"""Add some basic scores"""
 SCORE_MIN = 0
 SCORE_MAX = 100
 PASS_SCORE = 60.0
@@ -32,14 +32,13 @@ PASS_SCORE = 60.0
 # ------------------------------------------------------------------
 
 def title_name(name):
-    """Clean and format a person's name."""
+    """Clean and format a student's name."""
     return " ".join(name.strip().split().title())
-#return grade according to the score
 
 def student_into_csv(student):
-    """Turn a student into string."""
+    """Turn a student's information into string."""
     return ",".join(
-        [student.student_id, student.name, student.email, str(student.score)]  #Array
+        [student.student_id, student.name, student.email, str(student.score)]       #Array
     )
 
 
@@ -102,8 +101,8 @@ def validate_score(score_text):
     except ValueError:
         return None, "Score must be a float"
     if not (SCORE_MIN <= score <= SCORE_MAX):
-        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}" #keep the number being integer
-    return score, ""                           # Using "" as a success symbol
+        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"    #keep the number being integer
+    return score, ""        # Using "" as a success symbol
 
 def grade_distribution(students):
     """Count the number of students in each grade."""
@@ -112,6 +111,7 @@ def grade_distribution(students):
     count_c = 0
     count_d = 0
     count_f = 0
+    """ Count the number of students in each grade."""
     for student in students:
         grade = grade_calculation(student.score)
         if grade == "A":
@@ -125,6 +125,14 @@ def grade_distribution(students):
         else:
             count_f += 1
     return {"A": count_a, "B": count_b, "C": count_c, "D": count_d, "F": count_f}
+
+def search_student_by_id(students, student_id):
+    """Search student by ID."""
+    for student in students:
+        if student.student_id == student_id:
+            return student
+    return None
+
 
 def format_student(student):
     """Show student details."""
