@@ -1,3 +1,10 @@
+from color_function import(
+    colorize,
+    GREEN,
+    RED,
+    CYAN,
+    YELLOW
+)
 """This file is about some functions of menu."""
 def print_header(title):
     """Print a header to the screen."""
