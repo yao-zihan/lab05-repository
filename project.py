@@ -105,28 +105,6 @@ def validate_score(score_text):
         return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"    #keep the number being integer
     return score, ""        # Using "" as a success symbol
 
-def grade_distribution(students):
-    """Count the number of students in each grade."""
-    count_a = 0
-    count_b = 0
-    count_c = 0
-    count_d = 0
-    count_f = 0
-    """ Count the number of students in each grade."""
-    for student in students:
-        grade = grade_calculation(student.score)
-        if grade == "A":
-            count_a += 1
-        elif grade == "B":
-            count_b += 1
-        elif grade == "C":
-            count_c += 1
-        elif grade == "D":
-            count_d += 1
-        else:
-            count_f += 1
-    return {"A": count_a, "B": count_b, "C": count_c, "D": count_d, "F": count_f}
-
 def search_student_by_id(students, student_id):
     """Search student by ID."""
     for student in students:
