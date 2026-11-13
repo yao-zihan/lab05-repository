@@ -5,6 +5,11 @@ from color_function import(
     CYAN,
     YELLOW
 )
+
+"""To create a file that store the scores of the students which is learned from AI"""
+DATA_FILE = "students.csv"
+CSV_HEADER = "student_id,name,email,score"        # CSV header (AI)
+
 """This file is about some functions of menu."""
 def print_header(title):
     """Print a header to the screen."""
