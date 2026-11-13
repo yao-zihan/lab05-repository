@@ -1,3 +1,11 @@
+SCORE_MIN = 0
+SCORE_MAX = 100
+PASS_SCORE = 60.0
+
+"""To create a file that store the scores of the students which is learned from AI"""
+DATA_FILE = "students.csv"
+CSV_HEADER = "student_id,name,email,score"        # CSV header (AI)
+
 """This file is used to define the student data file"""
 def title_name(name):
     """Clean and format a student's name."""
@@ -80,4 +88,6 @@ def grade_statistics(students):
         else:
             count_f += 1
     return {"A": count_a, "B": count_b, "C": count_c, "D": count_d, "F": count_f}
+
+
 
