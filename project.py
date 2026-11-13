@@ -1,11 +1,8 @@
 # ------------------------------------------------------------------
 # Some constants
 # ------------------------------------------------------------------
-import unicodedata
-import math
-import csv
-from pathlib import Path
-DATA_FILE = Path(__file__).resolve().with_name("grades.csv")
+
+DATA_FILE = "students.csv"
 CSV_HEADER = "student_id,name,email,score"        # CSV header (AI)
 """To create a file that store the scores of the students which is learned from AI"""
 SCORE_MIN = 0
@@ -77,34 +74,3 @@ def print_menu():
     print(" 7. Score statistics")
     print(" 8. Save statistics")
     print(" 0. Exit program")
-
-
-def main():
-    try:
-        records = load_records()
-    except DataError as exc:
-        print(f"Startup failed: {exc}")
-        print(f"Check the file: {DATA_FILE}")
-        return
-
-    if records:
-        count = len(records)
-        records_word = "record" if count == 1 else "records"
-        print(f"Loaded {count} grade {records_word}.")
-
-    while True:
-        print_menu()
-        choice = input()
-
-        if choice == "1":
-            input_score(records)
-        elif choice == "2":
-            grade_calculation(records)
-        elif choice == "3":
-            name = input("Please enter the student's name: ")
-
-        elif choice in ("0", "q", "exit"):
-            print("\nGoodbye.")
-            return
-        else:
-            print("Invalid choice. Please enter 0, 1, or 2.")
