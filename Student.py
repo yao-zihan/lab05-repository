@@ -89,19 +89,5 @@ def grade_statistics(students):
             count_f += 1
     return {"A": count_a, "B": count_b, "C": count_c, "D": count_d, "F": count_f}
 
-def student_into_string(student):
-    """Turn a student's information into array."""
-    return ",".join(
-        [student.student_id, student.name, student.email, str(student.score)]       #Array
-    )
 
-def validate_score(score_text):
-    """Turn score into float and correct its range.Return score and error message."""
-    try:
-        score = float(score_text)
-    except ValueError:
-        return None, "Score must be a float"
-    if not (SCORE_MIN <= score <= SCORE_MAX):
-        return None, f"Score must be between {SCORE_MIN:.0f} to {SCORE_MAX:.0f}"    #keep the number being integer
-    return score, ""        # Using "" as a success symbol
 
