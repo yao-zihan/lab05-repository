@@ -36,5 +36,49 @@ def search_by_id(students, written_id):
             return student
     return None
 #----------------------------------------------------------------------------
+"""Return student by grade."""
+def filter_by_grade(students, letter):
+    return [student for student in students if student.grade() == letter]
+
+"""Return student by passed or not."""
+def filter_by_pass(students, passed):
+    return [student for student in students if student.passOrnot() == passed]
+
+"""Mix the two functions above."""
+def filter_student(students):
+    print_header("Filter student")
+    if not students:
+        print("No students")
+        return
+    print("1.Filter by grade A/B/C/D/F")
+    print("2.Filter by PASS or not")
+    print("0.Return")
+    choice = input("please enter your choice: ")
+    if choice == "1":
+        letter = input("please enter A/B/C/D/F: ")
+        if letter not in ("A","B","C","D","F"):
+            print(colorize("please enter correct letter",RED))
+            return
+        result = filter_by_grade(students, letter)
+
+    elif choice == "2":
+        answer = input("please enter P or F")
+        if answer not in ("P","F"):
+            print(colorize("please enter correct answer",RED))
+            return
+        result = filter_by_pass(students, answer == "p")
+
+    elif choice == "0":
+        return
+
+    else:
+        print(colorize("Incorrect choice", RED))
+        return
+
+    if not result:
+        print("There are no students in that condition")
+        return
+
+
 
 #----------------------------------------------------------------------------
