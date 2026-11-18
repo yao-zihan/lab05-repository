@@ -23,7 +23,8 @@ def print_menu():
     print(" 5. Search student according to ID")
     print(" 6. Search (Name / ID / Email)")
     print(" 7. Filter student")
-    print(" 8. Save statistics")
+    print(" 8. Show statistics")
+    print(" 9. Save statistics")
     print(" 0. Exit program")
 
 #----------------------------------------------------------------------------
