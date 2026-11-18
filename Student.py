@@ -62,6 +62,3 @@ class Student:
             status = "PASS"
         else:
             status = "FAIL"
-
-
-
