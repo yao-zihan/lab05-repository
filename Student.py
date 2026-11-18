@@ -33,8 +33,12 @@ class Student:
         cleaned_email = clean_email(email)
 
         cleaned_id = student_id.strip()
+        
         if not cleaned_id:
             raise ValueError(colorize("Please enter a valid student ID",RED))
+
+        if not cleaned_id.startwith("W"):
+            raise ValueError(colorize("Please enter a student ID start with W", RED))
 
         if not(Student.MIN_SCORE <= score <= Student.MAX_SCORE):
             raise ValueError(colorize(f"Please enter a score between {Student.MIN_SCORE:.0f} and {Student.MAX_SCORE:.0f}",RED))
@@ -45,15 +49,19 @@ class Student:
         self.student_id = cleaned_id
         self.score = score
 
-        def is_passed():
-            """return true if student passed the exam."""
-            if  PASS_SCORE <= self.score:
-                return True
-            else: return False
+    def is_passed(self):
+        """return true if student passed the exam."""
+        return self.score >= PASS_SCORE
 
-        def grade():
-            """return the grade of the student."""
-            return grade_calculation(self.score)
+    def grade(self):
+        """return the grade of the student."""
+        return grade_calculation(self.score)
+
+    def __str__(self):
+        if self.is_passed():
+            status = "PASS"
+        else:
+            status = "FAIL"
 
 
 
