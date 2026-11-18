@@ -15,6 +15,16 @@ def grade_calculation(score):
     else:
         return "F"
 
+def validate_score(score_text):
+    """Turn the score text into a float."""
+    try:
+        score = float(score_text)
+    except ValueError:
+        return None, "Score must be an integer"
+    if not (SCORE_MIN <= score <= SCORE_MAX):
+        return None, f"Score must between {SCORE_MIN:.0f} and {SCORE_MAX:.0f} "
+    return score, ""
+
 def average_score(students):
     """Calculate a average score."""
     if not students:
