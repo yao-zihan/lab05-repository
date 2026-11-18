@@ -1,4 +1,12 @@
-from Score import SCORE_MIN, SCORE_MAX, PASS_SCORE, grade_calculation
+from Score import (SCORE_MIN, SCORE_MAX, PASS_SCORE, grade_calculation)
+
+from color_function import(
+    colorize,
+    GREEN,
+    RED,
+    CYAN,
+    YELLOW
+)
 
 """This file is used to define the student data file"""
 def title_name(name):
@@ -9,9 +17,9 @@ def clean_email(email):
     """Clean and format a student's email."""
     cleaned_email = email.strip().lower()
     if "@" not in cleaned_email:
-        return None,"Missing @ symbol"
+        return None,colorize("Missing @ symbol",YELLOW)
     if "."not in cleaned_email:
-        return None,"Missing a DOT"
+        return None,colorize("Missing a DOT",YELLOW)
     return cleaned_email,"Valid"
 
 class Student:
@@ -26,10 +34,10 @@ class Student:
 
         cleaned_id = student_id.strip()
         if not cleaned_id:
-            raise ValueError("Please enter a valid student ID")
+            raise ValueError(colorize("Please enter a valid student ID",RED))
 
         if not(Student.MIN_SCORE <= score <= Student.MAX_SCORE):
-            raise ValueError(f"Please enter a score between {Student.MIN_SCORE:.0f} and {Student.MAX_SCORE:.0f}")
+            raise ValueError(colorize(f"Please enter a score between {Student.MIN_SCORE:.0f} and {Student.MAX_SCORE:.0f}",RED))
 
 
         self.name = cleaned_name
