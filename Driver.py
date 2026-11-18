@@ -42,7 +42,7 @@ def filter_by_grade(students, letter):
 
 """Return student by passed or not."""
 def filter_by_pass(students, passed):
-    return [student for student in students if student.passOrnot() == passed]
+    return [student for student in students if student.is_passed() == passed]
 
 """Mix the two functions above."""
 def filter_student(students):
