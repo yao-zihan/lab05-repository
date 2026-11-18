@@ -11,6 +11,8 @@ from color_function import(
 
 from dataclasses import dataclass
 
+from Driver import print_header
+
 DATA_FILE = "students.csv"
 
 @dataclass
@@ -68,14 +70,6 @@ def delete_student(students):
     students.remove(student)
     print(colorize(f"Successfully delete {student.name}。", GREEN))
 
-def print_header(title):
-    """print a header with """
-    print()
-    print("=" * 42)
-    print(colorize(title, CYAN))
-    print("=" * 42)
-
-
 def get_nonempty(prompt):
     """Check whether the input is empty."""
     while True:
@@ -83,4 +77,3 @@ def get_nonempty(prompt):
         if value:
             return value
         print(colorize("Input cannot be empty. Please try again.", YELLOW))
-
