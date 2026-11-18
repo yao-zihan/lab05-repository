@@ -21,7 +21,10 @@ class Student:
     score: float
 
 def student_from_csv(line):
-    """Parse a single line of CSV string into a Student object (using split). Return None on failure."""
+    """
+    Parse a single line of CSV string into a Student object (using split).
+    Return None on failure.
+    """
     parts = line.strip().split(",")
     if len(parts) != 4:
         return None
