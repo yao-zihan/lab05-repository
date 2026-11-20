@@ -1,17 +1,5 @@
 from Score import grade_calculation
-
-
-from color_function import(
-    colorize,
-    GREEN,
-    RED,
-    CYAN,
-    YELLOW
-)
-
 from dataclasses import dataclass
-
-from Driver import print_header
 
 DATA_FILE = "students.csv"
 CSV_HEADER = "student_id,name,email,score"
@@ -43,4 +31,3 @@ def student_to_csv(student):
     """Turn students into csv string"""
     return ",".join(
         [student.student_id, student.name, student.email, str(student.score)])
-
