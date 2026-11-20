@@ -66,4 +66,6 @@ class Student:
             status = "PASS"
         else:
             status = "FAIL"
-
+        return (f"id {self.student_id} | name {self.name} | "
+                f"email {self.email} | score {self.score:.1f} | "
+                f"status {self.grade()} | {status}")
