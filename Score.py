@@ -22,7 +22,8 @@ def average_score(students):
     total_score = 0
     for student in students:
         total_score += student.score
-    return total_score/len(students)
+    average = total_score / len(students)
+    return  average
 
 def highest_score(students):
     """Calculate a highest score."""
