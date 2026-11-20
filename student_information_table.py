@@ -30,8 +30,10 @@ def student_from_csv(line):
     parts = line.strip().split(",")
     if len(parts) != 4:
         return None
-    student_id, name, email, score_text = parts
-    score, _ = validate_score(score_text)
+    student_id = parts[0] , name = parts[1] , email = parts[2] , score_text = parts[3]
+
+    score, _ = validate_score(score_text)    #This line uses AI, "_" means "give up the second information.
+
     if score is None:
         return None
     return Student(student_id=student_id, name=name, email=email, score=score)
@@ -41,10 +43,10 @@ def student_to_csv(student):
     return ",".join(
         [student.student_id, student.name, student.email, str(student.score)])
 
-def find_student_by_id(students, student_id):
-    """Find a student by exact student ID. Return None if not found."""
+def search_by_id(students, written_id):
+    """Search student by ID"""
     for student in students:
-        if student.student_id == student_id:
+        if student.student_id == written_id:
             return student
     return None
 

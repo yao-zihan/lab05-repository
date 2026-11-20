@@ -30,12 +30,7 @@ def print_menu():
 #----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
-def search_by_id(students, written_id):
-    """Search student by ID"""
-    for student in students:
-        if student.student_id == written_id:
-            return student
-    return None
+
 #----------------------------------------------------------------------------
 """Return student by grade."""
 def filter_by_grade(students, letter):
