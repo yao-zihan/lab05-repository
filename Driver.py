@@ -31,7 +31,7 @@ def print_menu():
 
 #----------------------------------------------------------------------------
 
-#----------------------------------------------------------------------------
+#-----------------------------choice 7-------------------------------
 """Return student by grade."""
 def filter_by_grade(students, letter):
     return [student for student in students if student.grade() == letter]
@@ -75,6 +75,10 @@ def filter_student(students):
         print("There are no students in that condition")
         return
 
+#-----------------------------------choice 8-----------------------------------------
 
-
-#----------------------------------------------------------------------------
+def show_statistics(students):
+    print_header("Show statistics")
+    if not students:
+        print("No students")
+        return
