@@ -65,7 +65,7 @@ def delete_student(students):
     """Delete student from students list"""
     print_header("Delete Student")
     student_id = get_nonempty("Student ID of the student to delete:")
-    student = find_student_by_id(students, student_id)
+    student = search_by_id(students, student_id)
     if student is None:
         print(colorize(f"No student found with {student_id} 。", RED))
         return
