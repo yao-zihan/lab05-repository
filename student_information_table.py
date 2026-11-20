@@ -1,3 +1,8 @@
+"""
+This file is used to define the method of CSV.
+The CSV method is the advice of AI.
+"""
+
 from Score import grade_calculation
 from dataclasses import dataclass
 
@@ -21,7 +26,7 @@ def student_from_csv(line):
         return None
     student_id = parts[0] , name = parts[1] , email = parts[2] , score_text = parts[3]
 
-    score, _ = grade_calculation(score_text)    #This line uses AI, "_" means "give up the second information.
+    score, _ = grade_calculation(score_text)    #This line uses AI, "_" means give up the second information.
 
     if score is None:
         return None

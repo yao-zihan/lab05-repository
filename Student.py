@@ -1,3 +1,9 @@
+"""
+This file is used to define the student data file.
+Using “class” to store the basic information about the student, including name,email,id and score.
+All by ourselves!
+"""
+
 from Score import (SCORE_MIN, SCORE_MAX, PASS_SCORE, grade_calculation)
 
 from color_function import (
@@ -7,9 +13,6 @@ from color_function import (
     CYAN,
     YELLOW
 )
-
-"""This file is used to define the student data file"""
-
 
 def title_name(name):
     """Clean and format a student's name."""

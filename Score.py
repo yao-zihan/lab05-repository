@@ -1,3 +1,8 @@
+"""
+This file is used to define the score statistics.
+Including the method of grade calculation and average score.
+"""
+
 SCORE_MIN = 0
 SCORE_MAX = 100
 PASS_SCORE = 60.0

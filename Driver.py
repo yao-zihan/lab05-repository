@@ -1,3 +1,7 @@
+"""
+This file is the driver of the system.
+"""
+
 from color_function import(
     colorize,
     GREEN,
